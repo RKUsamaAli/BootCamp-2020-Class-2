@@ -17,6 +17,7 @@ jobs:
         with:
           version: 12 
       - name: Install NPM
+        working-directory: ./bootcamp-react-app
         run: npm install
         
       - name: Building Project
