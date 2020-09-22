@@ -1,0 +1,31 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: Auto_Deploy
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.3
+        with:
+          version: 12 
+      - name: GitHub Action for Yarn
+        uses: Borales/actions-yarn@v2.3.0
+        with:
+          # Yarn command
+          cmd: install
+      - name: Building Project
+        run: yarn build
+        
+      - name: Instaling Surge
+        run: npm install -global surge
+        
+      - name: Deploying Project On Surge
+        run: surge ./bootcamp-react-app/build http://bootcamp-2020-class-2-react-app.surge.sh/ --token ${{ secrets.SURGE_TOKEN }}
