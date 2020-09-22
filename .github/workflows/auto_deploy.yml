@@ -13,13 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
-        working-directory: ./bootcamp-react-app
       - name: Setup Node.js environment
         uses: actions/setup-node@v2-beta
         with:
           version: 12 
           
       - name: Install NPM
+        working-directory: ./bootcamp-react-app
         run: npm install
         
       - name: Building Project
