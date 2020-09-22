@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      working-directory: ./bootcamp-react-app
+        working-directory: ./bootcamp-react-app
       - name: Setup Node.js environment
         uses: actions/setup-node@v2-beta
         with:
